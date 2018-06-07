@@ -57,14 +57,19 @@ $(document).ready(function(){
 
     
     
-    $(document).on('click', '.box', function(e) {
-        if ($(e.currentTarget).hasClass('active')) return;
+    $(document).on('click', '.box', function(e) {        
+        if ($(e.target).hasClass('btn')){
+            $('.box').removeClass('active');
+            $('.box .painel').removeClass('active');
+        } else{
+            if ($(e.currentTarget).hasClass('active'))  return;
+        
+            $('.box').removeClass('active');
+            $(e.currentTarget).addClass('active');
 
-        $('.box').removeClass('active');
-        $(e.currentTarget).addClass('active');
-
-        $('.box .painel').removeClass('active');
-        $(e.currentTarget).find('.painel').addClass('active');
+            $('.box .painel').removeClass('active');
+            $(e.currentTarget).find('.painel').addClass('active');
+        }
     });
     
 });
