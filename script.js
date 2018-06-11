@@ -29,48 +29,49 @@ $(document).ready(function(){
         //sobe 4 elementos até chegar no box
         let sectionID = e.parent().parent().parent().parent().attr('id');    
         //pega o proximo elemento, no caso range
-        e.next().html(e.val());
+        
+        
+        // $(e).find('label').val(e.val());
+        // e.next().html(e.val());
         
         //seta o valor do range no local storage
         TabelaCores[sectionID][e.parent().index()] = e.val();   
 
         BackElement(e.parent(), sectionID);
+
+        localStorage.setItem('TabelaCores', JSON.stringify(TabelaCores));
         
     }
-    
-    //salva no localStorage
-    $(document).on('click', "button", function(e){
-        if (! $.isEmptyObject(TabelaCores)){
-            localStorage.setItem('TabelaCores', JSON.stringify(TabelaCores)); 
-        };
-    });   
-
     /*aqui eu mitei
     função recursiva pra acha o box e setar o RGB*/
     function BackElement(e, sectionID){ 
         if (e.attr('id') === sectionID) {
             $(`#${sectionID}`).css('background-color', "rgb("+TabelaCores[sectionID][0]+"," + TabelaCores[sectionID][1] + "," + TabelaCores[sectionID][2] + ")" );
+            $(`#${sectionID}`).find('#hex').html(rgb2hex('rgb('+TabelaCores[sectionID][0]+','+TabelaCores[sectionID][1]+','+TabelaCores[sectionID][2]));
+            $(`#${sectionID}`).find('#rgb').html('rgb('+TabelaCores[sectionID][0]+','+TabelaCores[sectionID][1]+','+TabelaCores[sectionID][2]+')');
         } else{     
             BackElement(e.parent(), sectionID);
         }    
     };
-
     
-    
-    $(document).on('click', '.box', function(e) {        
-        if ($(e.target).hasClass('btn')){
-            $('.box').removeClass('active');
-            $('.box .painel').removeClass('active');
-        } else{
+    $(document).on('click', '.box', function(e) {
             if ($(e.currentTarget).hasClass('active'))  return;
-        
+                    
             $('.box').removeClass('active');
             $(e.currentTarget).addClass('active');
 
             $('.box .painel').removeClass('active');
             $(e.currentTarget).find('.painel').addClass('active');
-        }
+        
     });
+
+    function rgb2hex(rgb){
+        rgb = rgb.match(/^rgba?[\s+]?\([\s+]?(\d+)[\s+]?,[\s+]?(\d+)[\s+]?,[\s+]?(\d+)[\s+]?/i);
+        return (rgb && rgb.length === 4) ? "#" +
+         ("0" + parseInt(rgb[1],10).toString(16)).slice(-2) +
+         ("0" + parseInt(rgb[2],10).toString(16)).slice(-2) +
+         ("0" + parseInt(rgb[3],10).toString(16)).slice(-2) : '';
+       }
     
 });
  

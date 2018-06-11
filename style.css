@@ -14,10 +14,11 @@ body{
     justify-content: center;
     flex-direction: column;
 
-    transition: 0.7s;
+    transition:flex  0.7s;
     overflow: hidden;
     /* transition-timing-function: cubic-bezier(0.13, 0.95, 0.23, 1.31);       */
     transition-timing-function: cubic-bezier(1, -1.38, 0, 0.37); 
+    box-shadow: 0 0 30px #424242;
 }
 
 .box.active {
@@ -32,18 +33,16 @@ body{
 .painel{
     display: flex;
     flex-direction: column;
-    background-color: #333;
+    background-color: transparent;
     width: 500px;
     height: 200px;
-    -moz-border-radius: 10px;
-    -webkit-border-radius: 10px;
-     border-radius: 10px; 
-    padding: 2px; 
+    padding: 10px; 
 
     transform: translateY(-1500px);
     transition: 0.7s;
     /* transition-timing-function: cubic-bezier(0.13, 0.95, 0.23, 1.31);     */
     transition-timing-function: ease; 
+    box-shadow: 0 0 30px #424242;
 
 }
 
@@ -52,51 +51,28 @@ body{
   display: flex;
 }
 
-
-.PainelRanges{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-}
-
-.PainelBotao{
-    display: flex;
-    flex-direction: column-reverse;
-    height: 100vh;    
-}
-
 .AligitensPainel{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  height: 24px;
 }
-
-.btn {
-  font-family: Arial;
-  color: #ffffff;
-  font-size: 20px;
-  background: rgba(255, 67, 95, 0.93);
-  border: 1px;
-  -moz-border-radius: 0px 0px 10px 10px;
-  -webkit-border-radius: 0px 0px 10px 10px;
-   border-radius: 0px 0px 10px 10px;
-
-}
-
-.btn:hover {
-  background: #3cb0fd;
-  background-image: -webkit-linear-gradient(top, #670100, #0a3959);
-  background-image: -moz-linear-gradient(top, #670100, #0a3959);
-  background-image: -ms-linear-gradient(top, #670100, #0a3959);
-  background-image: -o-linear-gradient(top, #670100, #0a3959);
-  background-image: linear-gradient(to bottom, #670100, #0a3959);
-  text-decoration: none;
-}
-
 .font{
-  font-family: Arial;
   color: #ffffff;
-  font-size: 20px;
+  font-family: 'Lato';
+  font-weight: 700;
+  font-size: 36px;
+}
+
+.corFinalHex{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.corFinalRgb{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 
 
